@@ -1,0 +1,5 @@
+
+CREATE TABLE "Message" (
+"Id" INTEGER PRIMARY KEY AUTOINCREMENT,
+"Content" TEXT
+);

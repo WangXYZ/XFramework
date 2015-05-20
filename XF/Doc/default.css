@@ -1,0 +1,10 @@
+body {font:14px/18px "tahoma";background:#F0F0F0;}
+a {text-decoration:none;color:#048;}
+a:hover {color:#840}
+
+#nav {}
+#nav dt {color:#888;}
+#nav dd {margin-left:15px;}
+
+#main {}
+#main h2 {margin:10px;padding:10px 0px;border-bottom:1px solid #CCC;}

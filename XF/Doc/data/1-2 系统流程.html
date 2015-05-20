@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+	<meta http-equiv="Content-Language" content="zh-CN" />
+	<link type="text/css" rel="stylesheet" href="../default.css" />
+</head>
+<body>
+<div id="main">
+
+<h2>系统流程</h2>
+
+<h3>模式</h3>
+<ul>
+	<li>生产模式（APP_MODE=production）下，不显示错误。</li>
+	<li>开发模式（APP_MODE=development）下，显示错误。</li>
+	<li>调试模式（APP_MODE=debug）下，显示错误，不会记录日志，可在线查看历史日志，修改项目配置等等。一般为独立的入口文件。</li>
+
+</ul>
+
+<h3>生产模式</h3>
+<ol>
+	<li>用户访问</li>
+	<li>载入项目入口文件</li>
+	<li>载入系统入库文件entry.php</li>
+	<ol>
+		<li>记录页面开始时间</li>
+		<li>判断系统常量，如没有定义则自动生成</li>
+		<li>载入系统核心类文件Core/XF.php</li>
+	</ol>
+	<li>调用XF::init()初始化</li>
+	<ol>
+		<li>载入项目公共函数库Common/common.php</li>
+		<li>载入系统公共函数库Common/common.php</li>
+		<li>根据APP_MODE设置错误报告级别</li>
+		<li>设置错误和异常的处理机制</li>
+		<li>注册系统自动加载机制</li>
+		<li>加载系统配置文件Config/config.php</li>
+		<li>加载项目配置文件Config/config.php</li>
+		<li>加载日志类Log</li>
+		<li>设置系统运行环境（time_limit、timezone、session、charset、等等）</li>
+	</ol>
+	<li>调用XF::run()运行项目</li>
+	<ol>
+		<li>加载语言类Lang（需对应文字编码）</li>
+		<li>加载钩子类Hook</li>
+		<li>处理钩子pre_system</li>
+		<li>加载地址类Uri</li>
+		<li>加载路由类Router</li>
+		<li>处理路由规则</li>
+		<li>加载视图类View</li>
+		<li>载入项目扩展配置，由配置项extend指定</li>
+		<li>加载数据类Data</li>
+		<li>加载系统控制器基类Controller</li>
+		<li>加载项目控制器类</li>
+		<li>处理钩子pre_controller</li>
+		<li>实例化控制器</li>
+		<li>处理钩子pre_action</li>
+		<li>执行控制器方法</li>
+		<li>处理钩子pre_display</li>
+		<li>（输出页面）</li>
+		<li>处理钩子post_system</li>
+	</ol>
+	<li>自动调用XF::_shutdown()处理结束</li>
+	<ol>
+		<li>记录页面结束时间，并写入日志文件。</li>
+	</ol>
+</ol>
+
+</div>
+</body>
+</html>
