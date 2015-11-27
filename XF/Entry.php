@@ -1,15 +1,15 @@
 <?php
 
-// ¼ÇÂ¼Ò³Ãæ¿ªÊ¼Ê±¼ä
+// è®°å½•é¡µé¢å¼€å§‹æ—¶é—´
 define('_START_TIME',microtime(true));
 
-// ¶¨Òå¿ò¼ÜÄ¿Â¼µÄ¾ø¶ÔÂ·¾¶
+// å®šä¹‰æ¡†æž¶ç›®å½•çš„ç»å¯¹è·¯å¾„
 if ( !defined('XF_PATH') ) {
 	define('XF_PATH',str_replace('\\','/',dirname(__FILE__)).'/');
 }
 
-// °æ±¾
+// ç‰ˆæœ¬
 define('XF_VERSION', '20150601');
 
-// ¼ÓÔØ¿ò¼Ü
+// åŠ è½½æ¡†æž¶
 require XF_PATH.'XF.php';
